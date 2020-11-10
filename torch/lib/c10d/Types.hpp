@@ -2,6 +2,7 @@
 
 #include <chrono>
 #include <cstdint>
+#include <torch/custom_class.h>
 
 namespace c10d {
 
@@ -57,12 +58,13 @@ struct ReduceScatterOptions {
   std::chrono::milliseconds timeout = kUnsetTimeout;
 };
 
-struct AllToAllOptions {
+struct AllToAllOptions : public torch::CustomClassHolder{
   std::chrono::milliseconds timeout = kUnsetTimeout;
 };
 
 struct BarrierOptions {
   std::chrono::milliseconds timeout = kUnsetTimeout;
 };
+
 
 } // namespace c10d
